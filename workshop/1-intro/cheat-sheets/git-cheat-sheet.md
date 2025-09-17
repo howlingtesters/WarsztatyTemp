@@ -1,4 +1,5 @@
-### Git cheat sheet 
+### Git cheat sheet
+
 - `git init` - inicjalizacja repozytorium
 - `git status` - sprawdzenie statusu repozytorium
 - `git add .` - dodanie wszystkich plików do stage
@@ -13,13 +14,14 @@
 - `git clone adres-repozytorium` - sklonowanie repozytorium
 
 ### Cofanie zmian
+
 - `git reset --hard` - cofnięcie wszystkich zmian
 - `git reset --hard HEAD~1` - cofnięcie ostatniego commita
 - `git reset --soft HEAD~1` - cofnięcie ostatniego commita, ale zachowanie zmian
 - `git revert nazwa-commita` - cofnięcie commita
 
-
 ### Stash - schowanie zmian
+
 - `git stash` - schowanie zmian
 - `git stash pop` - przywrócenie schowanych zmian
 - `git stash list` - wyświetlenie listy schowanych zmian

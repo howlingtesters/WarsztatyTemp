@@ -1,19 +1,19 @@
-import test, { APIRequestContext, expect } from '@playwright/test';
+import test, { APIRequestContext, expect } from "@playwright/test";
 
-const BOOKING_API_URL = 'https://restful-booker.herokuapp.com';
+const BOOKING_API_URL = "https://restful-booker.herokuapp.com";
 const bookingData = {
-  firstname: 'Anna',
-  lastname: 'Kowalska',
+  firstname: "Anna",
+  lastname: "Kowalska",
   totalprice: 120,
   depositpaid: true,
   bookingdates: {
-    checkin: '2024-12-12',
-    checkout: '2024-12-15',
+    checkin: "2024-12-12",
+    checkout: "2024-12-15",
   },
-  additionalneeds: 'Breakfast',
+  additionalneeds: "Breakfast",
 };
 
-test('new booking can be fetched by booking ID - plain solution', async ({
+test("new booking can be fetched by booking ID - plain solution", async ({
   request,
 }) => {
   // given: new booking is created
@@ -30,7 +30,7 @@ test('new booking can be fetched by booking ID - plain solution', async ({
 
   // when: booking is retrieved by ID
   const bookingDetailsById = await request.get(
-    `${BOOKING_API_URL}/booking/${bookingId}`
+    `${BOOKING_API_URL}/booking/${bookingId}`,
   );
 
   // then: check if request is succesful
@@ -40,19 +40,18 @@ test('new booking can be fetched by booking ID - plain solution', async ({
   expect(await bookingDetailsById.json()).toEqual(bookingData);
 });
 
-test('TODO', async ({ request }) => {
+test("TODO", async ({ request }) => {
   // TODO:
 });
 
 ///////////////////////////////////////////////////////////////////
 // 1. EASY: Add more test(s)
 
-
 // 2. BONUS: Extract methods createBooking and gettingBookingById
 
 async function createNewBooking(
   request: APIRequestContext,
-  bookingData: any
+  bookingData: any,
 ): Promise<any> {
   // TODO: provide implementation
 }
@@ -74,7 +73,7 @@ export type NewBookingResponse = {
 // 5. BONUS: Create BookerApi class to store Booker API methods, pass `request` in class constructor
 // Move to separate file
 export class BookingApi {
-  private readonly baseURL: string = 'https://restful-booker.herokuapp.com';
+  private readonly baseURL: string = "https://restful-booker.herokuapp.com";
 
   constructor(public readonly request: APIRequestContext) {}
 

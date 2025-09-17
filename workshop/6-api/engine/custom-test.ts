@@ -1,5 +1,5 @@
-import { test as base } from '@playwright/test';
-import { BookingApi } from './booking-api';
+import { test as base } from "@playwright/test";
+import { BookingApi } from "./booking-api";
 
 // Declare the types of your fixtures.
 type MyFixtures = {

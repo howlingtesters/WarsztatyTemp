@@ -1,36 +1,36 @@
-import { test, expect } from '@playwright/test';
-import { Booking } from '../engine/booking-model';
+import { test, expect } from "@playwright/test";
+import { Booking } from "../engine/booking-model";
 
-const BASE_API_URL = 'https://restful-booker.herokuapp.com';
+const BASE_API_URL = "https://restful-booker.herokuapp.com";
 const bookingData: Booking = {
-  firstname: 'Anna',
-  lastname: 'Wanna',
+  firstname: "Anna",
+  lastname: "Wanna",
   totalprice: 111,
   depositpaid: true,
   bookingdates: {
-    checkin: '2018-01-01',
-    checkout: '2019-01-01',
+    checkin: "2018-01-01",
+    checkout: "2019-01-01",
   },
-  additionalneeds: 'Breakfast',
+  additionalneeds: "Breakfast",
 };
 
 const updatedBookingData: Booking = {
-  firstname: 'Andrzej',
-  lastname: 'Duda',
+  firstname: "Andrzej",
+  lastname: "Duda",
   totalprice: 130,
   depositpaid: false,
   bookingdates: {
-    checkin: '2023-12-12',
-    checkout: '2023-12-15',
+    checkin: "2023-12-12",
+    checkout: "2023-12-15",
   },
-  additionalneeds: 'Flowers',
+  additionalneeds: "Flowers",
 };
 
 const partiallyUpdatedBookingData: Booking = {
-  lastname: 'Duda',
+  lastname: "Duda",
 };
 
-test('it is possible to create new booking', async ({ request }) => {
+test("it is possible to create new booking", async ({ request }) => {
   // when
   const newBookingResponse = await request.post(`${BASE_API_URL}/booking`, {
     data: bookingData,
@@ -43,7 +43,7 @@ test('it is possible to create new booking', async ({ request }) => {
   expect(body.bookingid).not.toBe(null);
 });
 
-test('new booking should be fetched by ID', async ({ request }) => {
+test("new booking should be fetched by ID", async ({ request }) => {
   // given
   const newBookingResponse = await request.post(`${BASE_API_URL}/booking`, {
     data: bookingData,
@@ -53,7 +53,7 @@ test('new booking should be fetched by ID', async ({ request }) => {
 
   // when
   const getBookingResponse = await request.get(
-    `${BASE_API_URL}/booking/${bookingId}`
+    `${BASE_API_URL}/booking/${bookingId}`,
   );
 
   // then
@@ -61,7 +61,7 @@ test('new booking should be fetched by ID', async ({ request }) => {
   expect(await getBookingResponse.json()).toEqual(bookingData);
 });
 
-test('new booking should be found in booking list', async ({ request }) => {
+test("new booking should be found in booking list", async ({ request }) => {
   // given
   const newBookingResponse = await request.post(`${BASE_API_URL}/booking`, {
     data: bookingData,
@@ -79,7 +79,7 @@ test('new booking should be found in booking list', async ({ request }) => {
   });
 });
 
-test('booking can be removed', async ({ request }) => {
+test("booking can be removed", async ({ request }) => {
   // given
   const newBookingResponse = await request.post(`${BASE_API_URL}/booking`, {
     data: bookingData,
@@ -90,7 +90,7 @@ test('booking can be removed', async ({ request }) => {
   // when
   const deleteBookingResponse = await request.delete(
     `${BASE_API_URL}/booking/${bookingId}`,
-    { headers: { Authorization: 'Basic YWRtaW46cGFzc3dvcmQxMjM=' } }
+    { headers: { Authorization: "Basic YWRtaW46cGFzc3dvcmQxMjM=" } },
   );
 
   // then
@@ -106,7 +106,7 @@ test('booking can be removed', async ({ request }) => {
   });
 });
 
-test('booking can be updated', async ({ request }) => {
+test("booking can be updated", async ({ request }) => {
   // given
   const newBookingResponse = await request.post(`${BASE_API_URL}/booking`, {
     data: bookingData,
@@ -118,9 +118,9 @@ test('booking can be updated', async ({ request }) => {
   const updateBookingResponse = await request.put(
     `${BASE_API_URL}/booking/${bookingId}`,
     {
-      headers: { Authorization: 'Basic YWRtaW46cGFzc3dvcmQxMjM=' },
+      headers: { Authorization: "Basic YWRtaW46cGFzc3dvcmQxMjM=" },
       data: updatedBookingData,
-    }
+    },
   );
 
   // then
@@ -128,7 +128,7 @@ test('booking can be updated', async ({ request }) => {
   expect(await updateBookingResponse.json()).toEqual(updatedBookingData);
 });
 
-test('booking can be partially updated', async ({ request }) => {
+test("booking can be partially updated", async ({ request }) => {
   // given
   const newBookingResponse = await request.post(`${BASE_API_URL}/booking`, {
     data: bookingData,
@@ -140,9 +140,9 @@ test('booking can be partially updated', async ({ request }) => {
   const partialUpdateBookingResponse = await request.patch(
     `${BASE_API_URL}/booking/${bookingId}`,
     {
-      headers: { Authorization: 'Basic YWRtaW46cGFzc3dvcmQxMjM=' },
+      headers: { Authorization: "Basic YWRtaW46cGFzc3dvcmQxMjM=" },
       data: partiallyUpdatedBookingData,
-    }
+    },
   );
 
   // then

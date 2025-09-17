@@ -1,13 +1,13 @@
-import { APIRequestContext, expect } from '@playwright/test';
-import { Booking, NewBookingResponse } from './booking-model';
+import { APIRequestContext, expect } from "@playwright/test";
+import { Booking, NewBookingResponse } from "./booking-model";
 
 export class BookingApi {
-  private readonly BASE_URL: string = 'https://restful-booker.herokuapp.com';
+  private readonly BASE_URL: string = "https://restful-booker.herokuapp.com";
 
   constructor(public readonly request: APIRequestContext) {}
 
   async createBooking(bookingData: Booking): Promise<NewBookingResponse> {
-    const path = this.BASE_URL + '/booking';
+    const path = this.BASE_URL + "/booking";
     const requestData = bookingData;
 
     const response = await this.request.post(path, { data: requestData });
@@ -32,7 +32,7 @@ export class BookingApi {
   async deleteBooking(bookingId: number): Promise<void> {
     const path = `${this.BASE_URL}/booking/${bookingId}`;
     const response = await this.request.delete(path, {
-      headers: { Authorization: 'Basic YWRtaW46cGFzc3dvcmQxMjM=' },
+      headers: { Authorization: "Basic YWRtaW46cGFzc3dvcmQxMjM=" },
     });
     expect(response.status()).toBe(201);
   }
@@ -40,7 +40,7 @@ export class BookingApi {
   async updateBooking(bookingId: number, booking: Booking): Promise<Booking> {
     const path = `${this.BASE_URL}/booking/${bookingId}`;
     const response = await this.request.put(path, {
-      headers: { Authorization: 'Basic YWRtaW46cGFzc3dvcmQxMjM=' },
+      headers: { Authorization: "Basic YWRtaW46cGFzc3dvcmQxMjM=" },
       data: booking,
     });
     expect(response.status()).toBe(200);
@@ -49,11 +49,11 @@ export class BookingApi {
 
   async partiallyUpdateBooking(
     bookingId: number,
-    booking: Booking
+    booking: Booking,
   ): Promise<Booking> {
     const path = `${this.BASE_URL}/booking/${bookingId}`;
     const response = await this.request.patch(path, {
-      headers: { Authorization: 'Basic YWRtaW46cGFzc3dvcmQxMjM=' },
+      headers: { Authorization: "Basic YWRtaW46cGFzc3dvcmQxMjM=" },
       data: booking,
     });
     expect(response.status()).toBe(200);

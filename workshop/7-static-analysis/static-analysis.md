@@ -14,7 +14,7 @@
 
 ### Visual Studio Code extensions
 
-* [Eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-* [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [Eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
 ✏️ [How to format code with Prettier in VSC + Formatting code on save](https://www.digitalocean.com/community/tutorials/how-to-format-code-with-prettier-in-visual-studio-code#step-2-formatting-code-on-save)

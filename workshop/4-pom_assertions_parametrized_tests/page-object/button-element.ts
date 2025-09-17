@@ -2,11 +2,10 @@ import { expect, Page } from "@playwright/test";
 import { BaseElement } from "./base-element";
 
 export class ButtonElement extends BaseElement {
-  
   constructor(
     protected page: Page,
     selector: string,
-    public label: string
+    public label: string,
   ) {
     super(selector, page);
   }
@@ -16,9 +15,9 @@ export class ButtonElement extends BaseElement {
   }
 
   public async validateElement(shouldBeEnabled: boolean = true) {
-    await this.checkLabel()
+    await this.checkLabel();
     if (shouldBeEnabled) {
-      await this.toBeEnabled()
+      await this.toBeEnabled();
     }
   }
 }

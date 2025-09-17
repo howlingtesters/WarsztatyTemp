@@ -1,37 +1,36 @@
-import { test, expect } from '@playwright/test';
-import { Booking } from '../engine/booking-model';
-import { BookingApi } from '../engine/booking-api';
-
+import { test, expect } from "@playwright/test";
+import { Booking } from "../engine/booking-model";
+import { BookingApi } from "../engine/booking-api";
 
 const bookingData: Booking = {
-  firstname: 'Anna',
-  lastname: 'Wanna',
+  firstname: "Anna",
+  lastname: "Wanna",
   totalprice: 111,
   depositpaid: true,
   bookingdates: {
-    checkin: '2018-01-01',
-    checkout: '2019-01-01',
+    checkin: "2018-01-01",
+    checkout: "2019-01-01",
   },
-  additionalneeds: 'Breakfast',
+  additionalneeds: "Breakfast",
 };
 
 const updatedBookingData: Booking = {
-  firstname: 'Andrzej',
-  lastname: 'Duda',
+  firstname: "Andrzej",
+  lastname: "Duda",
   totalprice: 130,
   depositpaid: false,
   bookingdates: {
-    checkin: '2023-12-12',
-    checkout: '2023-12-15',
+    checkin: "2023-12-12",
+    checkout: "2023-12-15",
   },
-  additionalneeds: 'Flowers',
+  additionalneeds: "Flowers",
 };
 
 const partiallyUpdatedBookingData: Booking = {
-  lastname: 'Duda',
+  lastname: "Duda",
 };
 
-test('it is possible to create new booking', async ({ request }) => {
+test("it is possible to create new booking", async ({ request }) => {
   // given
   const bookingApi = new BookingApi(request);
 
@@ -43,7 +42,7 @@ test('it is possible to create new booking', async ({ request }) => {
   expect(newBooking.bookingid).not.toBe(null);
 });
 
-test('new booking should be fetched by ID', async ({ request }) => {
+test("new booking should be fetched by ID", async ({ request }) => {
   // given
   const bookingApi = new BookingApi(request);
   const newBooking = await bookingApi.createBooking(bookingData);
@@ -56,7 +55,7 @@ test('new booking should be fetched by ID', async ({ request }) => {
   expect(savedBooking).toEqual(bookingData);
 });
 
-test('new booking should be found in booking IDs list', async ({ request }) => {
+test("new booking should be found in booking IDs list", async ({ request }) => {
   // given
   const bookingApi = new BookingApi(request);
   const newBooking = await bookingApi.createBooking(bookingData);
@@ -69,7 +68,7 @@ test('new booking should be found in booking IDs list', async ({ request }) => {
   expect(savedBooking).toContainEqual({ bookingid: bookingId });
 });
 
-test('booking can be deleted', async ({ request }) => {
+test("booking can be deleted", async ({ request }) => {
   // given
   const bookingApi = new BookingApi(request);
   const newBooking = await bookingApi.createBooking(bookingData);
@@ -83,7 +82,7 @@ test('booking can be deleted', async ({ request }) => {
   expect(savedBooking).not.toContainEqual({ bookingid: bookingId });
 });
 
-test('booking can be updated', async ({ request }) => {
+test("booking can be updated", async ({ request }) => {
   // given
   const bookingApi = new BookingApi(request);
   const newBooking = await bookingApi.createBooking(bookingData);
@@ -92,14 +91,14 @@ test('booking can be updated', async ({ request }) => {
   // when
   const updatedBooking = await bookingApi.updateBooking(
     bookingId,
-    updatedBookingData
+    updatedBookingData,
   );
 
   // then
   expect(updatedBooking).toEqual(updatedBookingData);
 });
 
-test('booking can be partially updated', async ({ request }) => {
+test("booking can be partially updated", async ({ request }) => {
   // given
   const bookingApi = new BookingApi(request);
   const newBooking = await bookingApi.createBooking(bookingData);
@@ -108,7 +107,7 @@ test('booking can be partially updated', async ({ request }) => {
   // when
   const partiallyUpdatedBooking = await bookingApi.partiallyUpdateBooking(
     bookingId,
-    partiallyUpdatedBookingData
+    partiallyUpdatedBookingData,
   );
 
   // then
