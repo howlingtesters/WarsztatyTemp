@@ -1,6 +1,7 @@
 import { test as base } from '@playwright/test';
-import { ToDoPage } from '../../page-object/to-do-page';
-import { ToDoEntity } from '../../page-object/to-do-entity';
+import { ToDoEntity } from '../4-pom_assertions_parametrized_tests/page-object/to-do-entity';
+import { ToDoPage } from '../4-pom_assertions_parametrized_tests/page-object/to-do-page';
+
 
 export type Items = {
   defaultItem: string;
