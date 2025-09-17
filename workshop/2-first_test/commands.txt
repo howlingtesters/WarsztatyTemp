@@ -1,0 +1,50 @@
+// Run all tests on all browsers specified in config file
+npx playwright test 
+
+// Run tests in given file without retries on 3 workers
+npx playwright test example.spec.ts --retries=0 --workers=3 
+
+// Run test that exist in given line inside example.spec.ts file
+npx playwright test example.spec.ts:10
+
+// List tests without running them
+npx playwright test --list
+
+// Run test that have any characters followed by @smoke-tests in the name
+npx playwright test --grep '.*title'
+
+// Run test that does not have any characters followed by @smoke-tests in the name
+npx playwright test --grep-invert 'title'
+
+// Run tests with UI console
+npx playwright test --ui
+
+// Run only on chosen browsers
+npx playwright test --project webkit --project firefox
+
+// Run tests that failed in previous test run
+npx playwright test --last-failed
+
+// Fail test run after 10 failed tests
+npx playwright test --max-failures=1
+
+// Run tests in debug mode
+npx playwright test --debug
+
+// Change reporter
+npx playwright test --reporter=dot
+
+// Use different then default config file
+npx playwright test --config=playwright.config.ts
+
+// Fail if test is flaky (failed less times then retry value) - default is passed.
+npx playwright test --fail-on-flaky-tests
+
+// Run tests with headed mode (headless mode is default)
+npx playwright test --headed
+
+// Test annotations
+// test.skip() - this test wil not run
+// test.fail() - this test will run but is expected to fail
+// test.fixme() - this test will not run and is expected to fail
+// test.slow() - this test will have 3 times more time to execute
