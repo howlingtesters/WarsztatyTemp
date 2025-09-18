@@ -34,6 +34,6 @@ test("Complex object", async () => {
     await apple.getSpoiledMore()
     console.log(apple.fullSpaceshipScareFactor)
 
-    console.log(apple.reality)
     console.log(apple.weaponName)
+    console.log(apple.reality)
 });

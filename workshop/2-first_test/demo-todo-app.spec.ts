@@ -1,6 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 import assert from 'assert';
-let value = 0
+
 const TODO_ITEMS = [
   'buy some cheese',
   'feed the cat',
@@ -11,6 +11,7 @@ test.describe('New Todo', () => {
   test('playwright basics', async ({  page, browser, browserName, context  }) => {
     let randomValue = Math.random()
     console.log(randomValue)
+    console.log(browserName)
     assert(randomValue > 0.75)
     await page.goto('https://demo.playwright.dev/todomvc');
     await context.newPage()
@@ -21,7 +22,7 @@ test.describe('New Todo', () => {
     await context.close();
   });
 
-  test('should allow me to add todo items', async ({  page, browser, browserName, context  }) => {
+  test('should allow me to add todo items', async ({  page  }) => {
     // create a new todo locator
     await page.goto('https://demo.playwright.dev/todomvc');
     const newTodo = page.getByPlaceholder('What needs to be done?');

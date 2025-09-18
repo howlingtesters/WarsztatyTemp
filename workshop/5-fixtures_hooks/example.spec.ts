@@ -55,12 +55,12 @@ test.describe("Page Objects", () => {
     await page.close()
   });
 
-  ['First test is running!!!', 'Second test is running!!!', 'Third test is running!!!'].forEach( name  => {
-    test(`Test to do page with task name: ${name}`, async ({ page, browser, browserName, context }) => {
+  ['First test is running!!!', 'Second test is running!!!', 'Third test is running!!!'].forEach( taskName  => {
+    test(`Test to do page with task name: ${taskName}`, async ({ page, browser, browserName, context }) => {
       // Given
-      console.log(name)
+      console.log(taskName)
       let entity: ToDoEntity = {
-        taskName: name, 
+        taskName, 
         isCompleted: false
       }
 

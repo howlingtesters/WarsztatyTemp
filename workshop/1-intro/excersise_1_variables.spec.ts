@@ -9,15 +9,23 @@ const startingWithFruits = 10
 test("Variables", async () => {
 
     // Declare variable
-    let stringStartingWithFruits = <string> <unknown> startingWithFruits
+    let amIString: string = <string> <unknown> startingWithFruits
+    let iAmDefinietelyAString: string = <string> <unknown> startingWithFruits
+    let thisTimeForSure = startingWithFruits.toString()
 
     // Type comparisons 
     console.log(typeof startingWithFruits)
-    console.log(typeof stringStartingWithFruits)
+    console.log(typeof amIString)    
+    console.log(iAmDefinietelyAString.length)
+    console.log(typeof iAmDefinietelyAString)
+    console.log(typeof thisTimeForSure)
     console.log(apple)
     console.log(papaya == orange)
     console.log(papaya === orange)
-    console.log(typeof papaya == typeof orange)
+    // console.log(false == "0")
+    // console.log(false === "0")
+    console.log(typeof papaya)
+    console.log(typeof orange)
     console.log(typeof papaya === typeof orange)
 });
 
@@ -86,6 +94,16 @@ test("String", async () => {
     console.log(str.replace(/Microsoft/g, "W3Schools")); // Please visit W3Schools and W3Schools!
 });
 
+export const replaceAll = (value: string | undefined, search: string,replacement: string
+): string | undefined => {
+  return value?.split(search).join(replacement);
+};
+
+test("Replace all", async () => {
+    const str = "Please visit Microsoft and Microsoft!";
+    console.log(str.replaceAll("Microsoft", "W3Schools")); // Please visit W3Schools and Microsoft!
+});
+
 test("Arrays", async () => {
     
     // Basic functions
@@ -113,4 +131,13 @@ test("Arrays", async () => {
     var fruits = ["Banana", "Orange", "Apple", "Mango"];
     console.log(fruits.sort());                         // [ 'Apple', 'Banana', 'Mango', 'Orange' ] => sort the elements of fruits 
     console.log(fruits.reverse());                      // [ 'Orange', 'Mango', 'Banana', 'Apple' ] => reverse the order of the elements
+});
+
+export const customSort = (fruits: string[]) => {
+    return fruits.sort((a, b) => (a[1] < b[1] ? -1 : 1));
+};
+
+test("Custom sort", async () => {
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    console.log(customSort(fruits))
 });

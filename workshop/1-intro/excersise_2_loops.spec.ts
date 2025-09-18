@@ -14,14 +14,14 @@ test("If", async () => {
     let startingWith: number
     
     // Ternary operator
-    startingWith = (chosenFruit == orange) ? startingWithOranges : 0;
+    startingWith = (chosenFruit === orange) ? startingWithOranges : 0;
     console.log(startingWith)
 
     // If
     chosenFruit = orange
-    if (chosenFruit == orange) {
+    if (chosenFruit === orange) {
         startingWith = startingWithOranges
-    } else if (chosenFruit == papaya) {
+    } else if (chosenFruit === papaya) {
         startingWith = startingWithpapayas
     } else {
         startingWith = startingWithFruits - startingWithOranges - startingWithpapayas
