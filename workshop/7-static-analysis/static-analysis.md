@@ -8,13 +8,28 @@
 
 ✏️ [Prettier: instalacja i konfiguracja](https://jaktestowac.pl/lesson/pw1sb01l06/)
 
-✏️ [Adding ESlint, Prettier, and Husky](https://playwrightsolutions.com/the-definitive-guide-to-api-test-automation-with-playwright-part-8-adding-eslint-prettier-and-husky/)
+✏️ [Adding ESlint, Prettier, and Husky]:
+npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint typescript
+npm install -D eslint-plugin-playwright
+
+Add to package.json as lint
+npx eslint .
+
+npm install --save-dev eslint-config-prettier
+npm install --save-dev --save-exact prettier
+npx prettier . --check
+
+add to package json as prettier:
+npx prettier . --write
+
+npx husky-init && npm install
+add to precommit script: npm run lint && npm run prettier
 
 📌 [Playwright docs: Lint your tests](https://playwright.dev/docs/best-practices#lint-your-tests)
 
 ### Visual Studio Code extensions
 
-* [Eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-* [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [Eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
 ✏️ [How to format code with Prettier in VSC + Formatting code on save](https://www.digitalocean.com/community/tutorials/how-to-format-code-with-prettier-in-visual-studio-code#step-2-formatting-code-on-save)
