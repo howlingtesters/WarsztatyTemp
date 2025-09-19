@@ -12,7 +12,8 @@ test.describe('New Todo', () => {
     let randomValue = Math.random()
     console.log(randomValue)
     console.log(browserName)
-    assert(randomValue > 0.75)
+    await page.pause()
+    // assert(randomValue > 0.75)
     await page.goto('https://demo.playwright.dev/todomvc');
     await context.newPage()
     const newContext = await browser.newContext();
