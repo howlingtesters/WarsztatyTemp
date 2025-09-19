@@ -1,10 +1,6 @@
 import { test } from "@playwright/test";
 import { Fruit } from "./excersise_4_fruit";
-import {
-  bestFruits,
-  getMostDeadlyFruitAsFunction,
-  getMostDeadlyFruitAsFunctionAsArrowFunction,
-} from "./excersise_3_functions";
+import { bestFruits, canIReturnMorethings, getMostDeadlyFruitAsFunction, getMostDeadlyFruitAsFunctionAsArrowFunction, getSoManyFruits, willThisWorkInReverse } from "./excersise_3_functions";
 import { proposeToHer } from "./promise";
 
 test("Functions and iterators", async () => {
@@ -21,8 +17,21 @@ test("Functions and iterators", async () => {
   // Function
   console.log(getMostDeadlyFruitAsFunction());
 
-  // Arrow function
-  console.log(getMostDeadlyFruitAsFunctionAsArrowFunction());
+    // Function
+    console.log(getMostDeadlyFruitAsFunction())
+
+    // Arrow function
+    console.log(getMostDeadlyFruitAsFunctionAsArrowFunction())
+    
+    // So many fruits
+    getSoManyFruits(bestFruits[0], bestFruits[1])
+
+    const returnValue = canIReturnMorethings()
+    console.log(returnValue.key + returnValue.value)
+    let {value, key} = canIReturnMorethings()
+    console.log(key + value)
+    let {keyReverse, valueReverse} = willThisWorkInReverse()
+    console.log(keyReverse + valueReverse)
 });
 
 test("Promise", async () => {
@@ -31,9 +40,9 @@ test("Promise", async () => {
   let iWillMarryYouForSure = proposeToHer();
   console.log(iWillMarryYouForSure);
 
-  // So it migh be not good idea do give her all of your assets
-  const giveHerAllYourAssets = function () {};
-  giveHerAllYourAssets();
+    // So it migh be not good idea do give her all of your assets
+    const giveHerAllYourAssets = function() {console.log('Transfer assets!')};
+    giveHerAllYourAssets()
 
   // Since the actual value is resolved here not when the promise is returned
   console.log(await iWillMarryYouForSure);

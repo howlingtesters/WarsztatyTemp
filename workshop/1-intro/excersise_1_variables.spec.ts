@@ -10,14 +10,25 @@ test("Variables", async () => {
   // Declare variable
   let stringStartingWithFruits = <string>(<unknown>startingWithFruits);
 
-  // Type comparisons
-  console.log(typeof startingWithFruits);
-  console.log(typeof stringStartingWithFruits);
-  console.log(apple);
-  console.log(papaya == orange);
-  console.log(papaya === orange);
-  console.log(typeof papaya == typeof orange);
-  console.log(typeof papaya === typeof orange);
+    // Declare variable
+    let amIString: string = <string> <unknown> startingWithFruits
+    let iAmDefinietelyAString: string = <string> <unknown> startingWithFruits
+    let thisTimeForSure = startingWithFruits.toString()
+
+    // Type comparisons 
+    console.log(typeof startingWithFruits)
+    console.log(typeof amIString)    
+    console.log(iAmDefinietelyAString.length)
+    console.log(typeof iAmDefinietelyAString)
+    console.log(typeof thisTimeForSure)
+    console.log(apple)
+    console.log(papaya == orange)
+    console.log(papaya === orange)
+    // console.log(false == "0")
+    // console.log(false === "0")
+    console.log(typeof papaya)
+    console.log(typeof orange)
+    console.log(typeof papaya === typeof orange)
 });
 
 test("Math", async () => {
@@ -83,6 +94,16 @@ test("String", async () => {
   console.log(str.replace(/Microsoft/g, "W3Schools")); // Please visit W3Schools and W3Schools!
 });
 
+export const replaceAll = (value: string | undefined, search: string,replacement: string
+): string | undefined => {
+  return value?.split(search).join(replacement);
+};
+
+test("Replace all", async () => {
+    const str = "Please visit Microsoft and Microsoft!";
+    console.log(str.replaceAll("Microsoft", "W3Schools")); // Please visit W3Schools and Microsoft!
+});
+
 test("Arrays", async () => {
   // Basic functions
   var fruits = ["Banana", "Orange", "Apple", "Mango"];
@@ -90,23 +111,17 @@ test("Arrays", async () => {
   console.log(fruits.toString()); // Banana,Orange,Apple,Mango
   console.log(fruits.join(" * ")); // Banana * Orange * Apple * Mango
 
-  // Change elements
-  console.log(fruits.pop()); // 'Mango' => removes last element
-  console.log(fruits.push("Kiwi")); // 4 => add element to array and return new length
-  console.log(fruits.shift()); // 'Banana' => removes first element
-  console.log(fruits.unshift("Lemon")); // 4 => add element at the beginning and return new length
+    // Sorting
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    console.log(fruits.sort());                         // [ 'Apple', 'Banana', 'Mango', 'Orange' ] => sort the elements of fruits 
+    console.log(fruits.reverse());                      // [ 'Orange', 'Mango', 'Banana', 'Apple' ] => reverse the order of the elements
+});
 
-  // Using lists
-  console.log(fruits[0]); // Banana
-  console.log(["Emil", "Tobias", "Linus"]);
-  console.log(fruits.concat(["Potato", "Carrot"])); // [ 'Lemon', 'Orange', 'Apple', 'Kiwi', 'Potato', 'Carrot' ] => merging two arrays and returns the result
+export const customSort = (fruits: string[]) => {
+    return fruits.sort((a, b) => (a[1] < b[1] ? -1 : 1));
+};
 
-  // Return part of the list
-  console.log(fruits.slice(1, 3)); // ['Orange', 'Apple']
-  console.log(fruits.slice(3)); // ['Mango']
-
-  // Sorting
-  var fruits = ["Banana", "Orange", "Apple", "Mango"];
-  console.log(fruits.sort()); // [ 'Apple', 'Banana', 'Mango', 'Orange' ] => sort the elements of fruits
-  console.log(fruits.reverse()); // [ 'Orange', 'Mango', 'Banana', 'Apple' ] => reverse the order of the elements
+test("Custom sort", async () => {
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    console.log(customSort(fruits))
 });

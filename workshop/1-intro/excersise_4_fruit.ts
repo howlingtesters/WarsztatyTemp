@@ -61,16 +61,16 @@ export class Fruit implements AntiSpaceshipStartegy {
 }
 
 export class Vitamin {
-  constructor(name: string) {}
+  constructor(public name: string[]) {}
 }
 
 // Inheritance - is relation
 export class Apple extends Fruit {
   // Composition - have relation
-  vitamins: Vitamin[];
+  vitamins: Vitamin
 
   constructor() {
-    super("Apple", "Sweet", ["Hidden bug", "Drop on the head"]);
-    this.vitamins = ["A", "B", "C"];
+    super('Apple', 'Sweet', ['Hidden bug', 'Drop on the head']);
+    this.vitamins = new Vitamin(['A', 'B', 'C'])
   }
 }

@@ -34,6 +34,10 @@ test("Complex object", async () => {
   await apple.getSpoiledMore();
   console.log(apple.fullSpaceshipScareFactor);
 
-  console.log(apple.reality);
-  console.log(apple.weaponName);
+    // Async methods require await to execute in the place that we want to be sure that the actual value will be returned (instead of Promise<value>)
+    await apple.getSpoiledMore()
+    console.log(apple.fullSpaceshipScareFactor)
+
+    console.log(apple.weaponName)
+    console.log(apple.reality)
 });

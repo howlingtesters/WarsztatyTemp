@@ -1,6 +1,7 @@
-import { test as base } from "@playwright/test";
-import { ToDoPage } from "../../page-object/to-do-page";
-import { ToDoEntity } from "../../page-object/to-do-entity";
+import { test as base } from '@playwright/test';
+import { ToDoEntity } from '../4-pom_assertions_parametrized_tests/page-object/to-do-entity';
+import { ToDoPage } from '../4-pom_assertions_parametrized_tests/page-object/to-do-page';
+
 
 export type Items = {
   defaultItem: string;
@@ -62,23 +63,14 @@ test.describe("Page Objects", () => {
     await page.close();
   });
 
-  [
-    "First test is running!!!",
-    "Second test is running!!!",
-    "Third test is running!!!",
-  ].forEach((name) => {
-    test(`Test to do page with task name: ${name}`, async ({
-      page,
-      browser,
-      browserName,
-      context,
-    }) => {
+  ['First test is running!!!', 'Second test is running!!!', 'Third test is running!!!'].forEach( taskName  => {
+    test(`Test to do page with task name: ${taskName}`, async ({ page, browser, browserName, context }) => {
       // Given
-      console.log(name);
+      console.log(taskName)
       let entity: ToDoEntity = {
-        taskName: name,
-        isCompleted: false,
-      };
+        taskName, 
+        isCompleted: false
+      }
 
       let toDoPage: ToDoPage = new ToDoPage(page);
 
